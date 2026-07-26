@@ -23,6 +23,9 @@ public class User {
     private String firstName;
     private String lastName;
     private LocalDate dob;
+    private boolean gender;
+    private String level;
+
 
     @ManyToMany
     private Set<Role> roles;
