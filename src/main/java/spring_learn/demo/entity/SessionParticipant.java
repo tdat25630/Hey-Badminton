@@ -19,7 +19,7 @@ public class SessionParticipant {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "session_id")
-    private BSession session;
+    private BSession sessionId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -18,7 +18,7 @@ public class BSession {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String description;
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sessionId", cascade = CascadeType.ALL)
     private List<SessionParticipant> participants;
 
 

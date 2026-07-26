@@ -37,4 +37,10 @@ public class SessionParticipantDAOImpl implements ISessionParticipantDAO {
     public Page<SessionParticipant> findAll(Pageable pageable) {
         return iSessionParticipantRepository.findAll(pageable);
     }
+
+    @Override
+    public Page<SessionParticipant> findBySessionId(String sessionId, Pageable pageable) {
+        return iSessionParticipantRepository.findBySessionId(sessionId, pageable);
+    }
+
 }
