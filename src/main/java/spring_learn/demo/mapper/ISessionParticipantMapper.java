@@ -10,6 +10,7 @@ import spring_learn.demo.entity.SessionParticipant;
 public interface ISessionParticipantMapper {
     @Mapping(target = "sessionId", ignore = true)
     SessionParticipant toSessionParticipant(SessionParticipantRequest sessionParticipantRequest);
-    @Mapping(target = "sessionId", ignore = true)
+    @Mapping(target = "sessionId", source = "id")
+    @Mapping(source = "user.id", target = "userId")
     SessionParticipantResponse toSessionParticipantResponse(SessionParticipant sessionParticipant);
 }

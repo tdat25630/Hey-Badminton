@@ -11,6 +11,7 @@ import spring_learn.demo.entity.BSession;
 public interface ISessionMapper {
     @Mapping(target = "participants", ignore = true)
     BSession toSession(SessionCreationRequest sessionCreationRequest);
+    @Mapping(target = "sessionId", source = "id")
     SessionResponse toSessionResponse(BSession session);
 
 }
