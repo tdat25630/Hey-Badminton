@@ -67,5 +67,16 @@ public class SessionParticipantService {
         return pageMapper.toPageResponse(page, sessionParticipantMapper::toSessionParticipantResponse);
     }
 
+    public void deleteSessionParticipantFromSession(String sessionId, String participantId){
+
+
+        BSession session = sessionDAO.findById(sessionId).orElseThrow(()-> new RuntimeException("session not existed"));
+
+
+        sessionParticipantDAO.deleteById(participantId);
+
+
+    }
+
 
 }
