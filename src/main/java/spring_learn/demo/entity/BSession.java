@@ -21,5 +21,7 @@ public class BSession {
     @OneToMany(mappedBy = "sessionId", cascade = CascadeType.ALL)
     private List<SessionParticipant> participants;
 
+    private boolean status;
+
 
 }

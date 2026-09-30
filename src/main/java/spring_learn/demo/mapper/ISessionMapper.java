@@ -3,7 +3,9 @@ package spring_learn.demo.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import spring_learn.demo.dto.request.SessionCreationRequest;
+import spring_learn.demo.dto.request.SessionUpdateRequest;
 import spring_learn.demo.dto.response.SessionResponse;
 import spring_learn.demo.entity.BSession;
 
@@ -13,5 +15,6 @@ public interface ISessionMapper {
     BSession toSession(SessionCreationRequest sessionCreationRequest);
     @Mapping(target = "sessionId", source = "id")
     SessionResponse toSessionResponse(BSession session);
+    void updateSession(@MappingTarget BSession session, SessionUpdateRequest request);
 
 }

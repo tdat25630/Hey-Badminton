@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import spring_learn.demo.Service.BSessionService;
 import spring_learn.demo.dto.request.SessionCreationRequest;
+import spring_learn.demo.dto.request.SessionUpdateRequest;
 import spring_learn.demo.dto.response.ApiResponse;
 import spring_learn.demo.dto.response.PageResponse;
 import spring_learn.demo.dto.response.SessionResponse;
@@ -44,6 +45,13 @@ public class BSessionController {
 
         return ApiResponse.<PageResponse<SessionResponse>>builder()
                 .result(bSessionService.getSessions(pageable))
+                .build();
+    }
+
+    @PutMapping("/{sessionId}")
+    ApiResponse<SessionResponse> updateSession(@PathVariable String sessionId ,@RequestBody SessionUpdateRequest request){
+        return ApiResponse.<SessionResponse>builder()
+                .result(bSessionService.updateSession(sessionId, request))
                 .build();
     }
 

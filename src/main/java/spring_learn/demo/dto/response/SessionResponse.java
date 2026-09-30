@@ -9,4 +9,6 @@ import lombok.*;
 public class SessionResponse {
     private String sessionId;
     private String description;
+    private boolean status;
+
 }

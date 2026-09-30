@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import spring_learn.demo.DAL.DAOImpl.SessionDAOImpl;
 import spring_learn.demo.dto.request.SessionCreationRequest;
+import spring_learn.demo.dto.request.SessionUpdateRequest;
 import spring_learn.demo.dto.response.PageResponse;
 import spring_learn.demo.dto.response.SessionResponse;
 import spring_learn.demo.entity.BSession;
@@ -42,4 +43,16 @@ public class BSessionService {
 
         sessionDAOImpl.deleteById(sessionId);
     }
+
+    public SessionResponse updateSession(String sessionId, SessionUpdateRequest request){
+
+        BSession session = sessionDAOImpl.findById(sessionId)
+                .orElseThrow(() -> new RuntimeException("Session not found with id: " + sessionId));
+
+        iSessionMapper.updateSession(session, request);
+
+        return iSessionMapper.toSessionResponse(sessionDAOImpl.save(session));
+
+    }
+
 }
