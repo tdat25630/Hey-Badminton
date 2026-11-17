@@ -8,6 +8,8 @@ import lombok.*;
 @Builder
 public class SessionCreationRequest {
     private String description;
+    private boolean status;
+
 
 
 }

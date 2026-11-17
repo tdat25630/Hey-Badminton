@@ -104,9 +104,18 @@ public class UserService {
                 new RuntimeException("User not found"));
 
         userMapper.updateUser(user,request);
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        var roles = roleDAOJpa.findAllById(request.getRoles());
-        user.setRoles(new HashSet<>(roles));
+        if (request.getPassword() != null && !request.getPassword().isBlank() && !request.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+        }else {
+            user.setPassword(user.getPassword());
+        }
+
+        if (request.getRoles() != null ) {
+            var roles = roleDAOJpa.findAllById(request.getRoles());
+            user.setRoles(new HashSet<>(roles));
+        }
+
 
 //        user.setPassword(request.getPassword());
 //        user.setFirstName(request.getFirstName());
